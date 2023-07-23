@@ -4,13 +4,39 @@
 // b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 
 Console.Write("Enter first slope number: ");
-double k1 = Convert.ToInt32(Console.ReadLine());
+double k1 = Convert.ToDouble(Console.ReadLine());
+
 Console.Write("Enter first y-intercept: ");
-double b1 = Convert.ToInt32(Console.ReadLine());
+double b1 = Convert.ToDouble(Console.ReadLine());
+
 Console.Write("Enter second slope number: ");
-double k2 = Convert.ToInt32(Console.ReadLine());
+double k2 = Convert.ToDouble(Console.ReadLine());
+
 Console.Write("Enter second y-intercept: ");
-double b2 = Convert.ToInt32(Console.ReadLine());
+double b2 = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine();
+
+bool ValidateLines()
+{
+    if (k1 == k2)
+    {
+        if (b1 == b2)
+        {
+            Console.WriteLine("Lines are identical.");
+            Console.WriteLine();
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Lines are parallel and have no intersection.");
+            Console.WriteLine();
+            return false;
+        }
+    }
+
+    return true;
+}
 
 double FindX()
 {
@@ -24,4 +50,8 @@ double FindY()
     return y;
 }
 
-Console.WriteLine($"Coordinates of the point of intersection are: {FindX()}; {FindY()}");
+if(ValidateLines())
+{
+    Console.WriteLine($"Coordinates of the point of intersection are: {FindX()}; {FindY()}");
+    Console.WriteLine();
+}
